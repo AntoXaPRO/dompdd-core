@@ -6,7 +6,7 @@ import { object, string, SchemaOf } from 'yup';
  */
 export type TAuthForm = {
   login: string;
-  password?: string;
+  password: string;
 };
 
 /**
