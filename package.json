@@ -1,0 +1,28 @@
+{
+  "name": "dompdd-core",
+  "version": "1.0.0",
+  "description": "TypeScript core library for DOMPDD",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rm -r lib/* && tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [],
+  "author": "AntoXa PRO <info@antoxa.pro>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/AntoXaPRO/dompdd-core.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  },
+  "peerDependencies": {
+    "axp-ts": "^1.4.3",
+    "yup": "^0.32.11"
+  }
+}
