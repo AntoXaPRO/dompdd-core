@@ -1,5 +1,5 @@
-import { ValidEntity } from 'axp-ts';
 import { object, string, SchemaOf } from 'yup';
+import { BaseValidEntity } from '../../base';
 
 /**
  * Форма авторизации.
@@ -27,8 +27,8 @@ export const validFormSchema: SchemaOf<TAuthForm> = object({
 /**
  * Экспорт модуля.
  */
-export class AuthFormModel extends ValidEntity<TAuthForm> {
-  constructor(obj: any) {
+export class AuthFormModel extends BaseValidEntity<TAuthForm> {
+  constructor(obj: TAuthForm) {
     super(obj, validFormSchema);
   }
 }

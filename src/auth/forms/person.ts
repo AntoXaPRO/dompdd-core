@@ -1,5 +1,5 @@
 import { string, object, number, date, SchemaOf } from 'yup';
-import { BaseDbValidForm } from '../../base';
+import { BaseDbValidEntity } from '../../base';
 
 import { GenderEnum, genders } from '../db/person';
 
@@ -110,7 +110,7 @@ const personFromValidSchema: SchemaOf<TPersonForm> = object(personValidSchema);
 /**
  * Форма перс. данных.
  */
-export class PersonFormModel extends BaseDbValidForm<TPersonForm> {
+export class PersonFormModel extends BaseDbValidEntity<TPersonForm> {
   constructor(obj: any = {}) {
     // Если пол не указан (по умолчанию).
     if (!obj.gender) {

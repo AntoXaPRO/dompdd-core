@@ -3,9 +3,8 @@
  */
 export type TAuthPayload = {
   _id: string;
-  email: string;
+  ip: string;
   isDev?: boolean;
-  groups: string[];
 };
 
 /**

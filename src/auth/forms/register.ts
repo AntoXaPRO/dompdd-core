@@ -1,6 +1,6 @@
 import { SchemaOf, object, string } from 'yup';
 
-import { BaseDbValidForm } from '../../base';
+import { BaseValidEntity } from '../../base';
 import { personValidSchema } from './person';
 
 /**
@@ -47,7 +47,7 @@ const formValidSchema: SchemaOf<TRegisterForm> = object({
 /**
  * Форма регистрации.
  */
-export class RegisterFormModel extends BaseDbValidForm<TRegisterForm> {
+export class RegisterFormModel extends BaseValidEntity<TRegisterForm> {
   constructor(obj: any = {}) {
     // Дата рождения.
     if (obj.birthday) {

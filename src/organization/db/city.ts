@@ -1,4 +1,4 @@
-import { TBaseDbEntity, BaseDbEntity } from '../../base';
+import { TBaseDbEntity } from '../../base';
 
 /**
  * Тип данных - город.

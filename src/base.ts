@@ -1,4 +1,4 @@
-import { ValidEntity } from 'axp-ts';
+import { IValidEntity, ValidEntity } from 'axp-ts';
 
 /**
  * Базовая сущность.
@@ -10,42 +10,48 @@ export type TBaseDbEntity = {
 };
 
 /**
- * Интерфейс базовой сущности в БД.
+ * Базовый интерфейс для валидируемой сощности.
  */
-export interface IBaseDbEntity extends TBaseDbEntity {
-  toString(): string;
-}
+export interface IBaseValidEntity<T> extends IValidEntity<T> {}
 
 /**
- * Базовая сущность для БД.
+ * Базовый интерфейс для валидируемой сущности из БД.
  */
-export class BaseDbEntity implements IBaseDbEntity {
-  _id: string;
-  dateCreate: number;
-  dateUpdate: number;
-
-  constructor(obj: any = {}) {
-    this._id = obj._id || '';
-    this.dateCreate = obj.dateCreate;
-    this.dateUpdate = obj.dateUpdate;
-  }
-
-  toString(): string {
-    return this._id?.toString() || 'undefined';
-  }
-}
-
-/**
- * Базовая форма для создания или редактирования сущностей в БД.
- */
-export class BaseDbValidForm<T> extends ValidEntity<T> {
+export interface IBaseDbValidEntity<T> extends IBaseValidEntity<T> {
   _id: string;
   dateCreate?: number;
   dateUpdate?: number;
+}
 
-  constructor(obj: IBaseDbEntity, schema: any) {
+/**
+ * Модель для валидирования сущностей.
+ */
+export class BaseValidEntity<T>
+  extends ValidEntity<T>
+  implements IBaseValidEntity<T>
+{
+  constructor(obj: T, schema: any) {
     super(obj, schema);
-    this._id = obj._id;
+  }
+}
+
+/**
+ * Модель для валидирования сущностей из БД.
+ */
+export class BaseDbValidEntity<T>
+  extends BaseValidEntity<T>
+  implements IBaseDbValidEntity<T>
+{
+  _id: string;
+
+  dateCreate?: number;
+  dateUpdate?: number;
+
+  constructor(obj: any, schema: any) {
+    super(obj, schema);
+
+    this._id = obj._id || '';
+
     this.dateCreate = obj.dateCreate;
     this.dateUpdate = obj.dateUpdate;
   }

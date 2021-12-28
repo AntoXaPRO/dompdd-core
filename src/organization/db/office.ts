@@ -1,11 +1,11 @@
 import { TBaseDbEntity } from '../../base';
-// import { TUnit } from './unit';
+import { TUnit } from './unit';
 
 /**
  * Интерфейс офиса обучения.
  */
 export type TOffice = TBaseDbEntity & {
-  unit: string;
+  unit: TUnit | string;
 
   name: string;
   location: string;
