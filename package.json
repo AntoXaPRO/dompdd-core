@@ -1,6 +1,6 @@
 {
   "name": "dompdd-core",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "TypeScript core library for DOMPDD",
   "main": "lib/index.js",
   "module": "lib/index.js",
