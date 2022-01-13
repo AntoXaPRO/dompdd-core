@@ -39,6 +39,23 @@ export const validPhoneNumber = (value?: number | string) => {
 };
 
 /**
+ * Формат номера телефона.
+ */
+export const getPhoneNumberFormat = (
+  phone: number | string, prefix: string = '+7 '
+): string => {
+  let result = '+7 '
+  const strValue = getPhoneNumberValue(phone)?.toString().substring(0, 10)
+  if(strValue) {
+    for(let i = 0; i < strValue.length; i++) {
+      if(i === 3 || i === 6 || i === 8) result += ' '
+      result += strValue[i]
+    }
+  }
+  return result
+}
+
+/**
  * Функция для проеобрадования ФИО.
  */
 export const capitalize = (str: string = '') => {
@@ -129,6 +146,7 @@ export class PersonFormModel extends BaseDbValidEntity<TPersonForm> {
     super(obj, personFromValidSchema);
   }
 
+  static getPhoneNumberFormat = getPhoneNumberFormat;
   static getPhoneNumberValue = getPhoneNumberValue;
   static validPhoneNumber = validPhoneNumber;
   static capitalize = capitalize;
