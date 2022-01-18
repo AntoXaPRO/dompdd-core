@@ -1,13 +1,13 @@
-import { IValidEntity, ValidEntity } from 'axp-ts';
+import { IValidEntity, ValidEntity } from 'axp-ts'
 
 /**
  * Базовая сущность.
  */
 export type TBaseDbEntity = {
-  _id: string;
-  dateCreate?: number;
-  dateUpdate?: number;
-};
+  _id: string
+  dateCreate?: number
+  dateUpdate?: number
+}
 
 /**
  * Базовый интерфейс для валидируемой сощности.
@@ -18,9 +18,9 @@ export interface IBaseValidEntity<T> extends IValidEntity<T> {}
  * Базовый интерфейс для валидируемой сущности из БД.
  */
 export interface IBaseDbValidEntity<T> extends IBaseValidEntity<T> {
-  _id: string;
-  dateCreate?: number;
-  dateUpdate?: number;
+  _id: string
+  dateCreate?: number
+  dateUpdate?: number
 }
 
 /**
@@ -31,7 +31,7 @@ export class BaseValidEntity<T>
   implements IBaseValidEntity<T>
 {
   constructor(obj: T, schema: any) {
-    super(obj, schema);
+    super(obj, schema)
   }
 }
 
@@ -42,17 +42,17 @@ export class BaseDbValidEntity<T>
   extends BaseValidEntity<T>
   implements IBaseDbValidEntity<T>
 {
-  _id: string;
+  _id: string
 
-  dateCreate?: number;
-  dateUpdate?: number;
+  dateCreate?: number
+  dateUpdate?: number
 
   constructor(obj: any, schema: any) {
-    super(obj, schema);
+    super(obj, schema)
 
-    this._id = obj._id || '';
+    this._id = obj._id || ''
 
-    this.dateCreate = obj.dateCreate;
-    this.dateUpdate = obj.dateUpdate;
+    this.dateCreate = obj.dateCreate
+    this.dateUpdate = obj.dateUpdate
   }
 }

@@ -1,8 +1,8 @@
-import * as db from './db';
-import * as forms from './forms';
-import * as entities from './entities';
+import * as db from './db'
+import * as forms from './forms'
+import * as entities from './entities'
 
-import { TAccount } from './db/account';
+import { TAccount } from './db/account'
 
 /**
  * Данные для возврата после авторизации/регистрации.
@@ -10,6 +10,6 @@ import { TAccount } from './db/account';
 export type TAuthObj = {
   token: string;
   account: TAccount;
-};
+}
 
-export { db, forms, entities };
+export { db, forms, entities }
