@@ -5,7 +5,7 @@ import { TPerson } from '../../auth/db/person'
  * Отзыв.
  */
 export type TReview = TBaseDbEntity & {
-  unit: string
+  units: string[]
 
   title: string
   text: string

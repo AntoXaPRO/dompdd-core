@@ -1,4 +1,4 @@
-import { SchemaOf, object, string, boolean } from 'yup'
+import { SchemaOf, object, string, boolean, array } from 'yup'
 import { BaseDbValidEntity } from '../../base'
 
 /**
@@ -6,7 +6,7 @@ import { BaseDbValidEntity } from '../../base'
  */
 export type TReviewFrom = {
   _id?: string,
-  unit: string,
+  units: string[],
   person: string,
   instructor: string,
 
@@ -26,10 +26,8 @@ const formSchema: SchemaOf<TReviewFrom> = object({
     .meta({ label: 'ID' })
     .trim()
     .lowercase(),
-  unit: string()
+  units: array()
     .meta({ label: 'Подразделение' })
-    .trim()
-    .lowercase()
     .required('Укажите подразделение'),
   person: string()
     .meta({ label: 'Персональные данные' })
