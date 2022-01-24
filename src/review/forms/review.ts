@@ -6,6 +6,7 @@ import { BaseDbValidEntity } from '../../base'
  */
 export type TReviewFrom = {
   _id?: string,
+
   units: string[],
   person: string,
   instructor: string,
@@ -26,6 +27,7 @@ const formSchema: SchemaOf<TReviewFrom> = object({
     .meta({ label: 'ID' })
     .trim()
     .lowercase(),
+
   units: array()
     .meta({ label: 'Подразделение' })
     .required('Укажите подразделение'),
@@ -43,10 +45,10 @@ const formSchema: SchemaOf<TReviewFrom> = object({
   title: string()
     .meta({ label: 'Заголовок' })
     .trim()
-    .max(30, 'Заголовок должен содержать максимум 30 символов')
+    .max(300, 'Заголовок должен содержать максимум 30 символов')
     .required('Укажите заголовок'),
   text: string()
-    .max(1000, 'Текст отзыва должен содержать максимум 1000 символов')
+    .max(6000, 'Текст отзыва должен содержать максимум 1000 символов')
     .required('Введите текст отзыва'),
 
   published: boolean()
