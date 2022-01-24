@@ -1,11 +1,12 @@
 import { TBaseDbEntity } from '../../base'
 import { TPerson } from '../../auth/db/person'
+import { TUnit } from '../../organization/db/unit'
 
 /**
  * Отзыв.
  */
 export type TReview = TBaseDbEntity & {
-  units: string[]
+  units: TUnit[]
 
   title: string
   text: string
