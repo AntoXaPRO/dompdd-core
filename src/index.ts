@@ -5,8 +5,10 @@ import * as auth from './auth'
 // Организация.
 import * as organization from './organization'
 // Отзывы.
-import * as review from './review'
+import * as reviews from './reviews'
+// Инструкторы.
+import * as instructors from './instructors'
 
 /* 
 Экспорт модулей. */
-export { base, auth, organization, review }
+export { base, auth, organization, reviews, instructors }
