@@ -8,8 +8,6 @@ export type TInstructor = TBaseDbEntity & {
   // Заблокирован.
   disabled: boolean
 
-  // Название.
-  name: string
   // Алиас.
   alias: string
 
@@ -19,17 +17,17 @@ export type TInstructor = TBaseDbEntity & {
   person: TPerson
 
   // Слоган.
-  slogan: string
+  slogan?: string
   // Особенности.
-  feature: string
+  feature?: string
   // Хобби.
-  hobbies: string[]
+  hobbies?: string[]
   // Фильмы/Книги.
-  cinema: string[]
+  cinema?: string[]
 
   // Текст.
-  text: string
+  text?: string
 
   // Временные поля.
-  _tmp: any
+  _tmp?: any
 }
