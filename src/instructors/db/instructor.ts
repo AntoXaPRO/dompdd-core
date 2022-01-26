@@ -5,16 +5,15 @@ import { TPerson } from '../../auth/db/person'
  * Тип данных (Инструктор).
  */
 export type TInstructor = TBaseDbEntity & {
-  // Заблокирован.
-  disabled: boolean
-
-  // Алиас.
-  alias: string
-
   // Подразделения.
   units: string[]
   // Перс. данные.
   person: TPerson
+
+  // Заблокирован.
+  disabled: boolean
+  // Алиас.
+  alias: string
 
   // Слоган.
   slogan?: string
