@@ -85,6 +85,7 @@ export const schemaForm: SchemaOf<TInstructorForm> = object({
  */
 export class InstructorFormModel extends BaseDbValidEntity<TInstructorForm> {
   constructor(obj: any = {}) {
+    obj.person = obj.person?._id || ''
     super(obj, schemaForm)
   }
 }
