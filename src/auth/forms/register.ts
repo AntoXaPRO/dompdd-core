@@ -1,24 +1,24 @@
-import { SchemaOf, object, string } from 'yup';
+import { SchemaOf, object, string } from 'yup'
 
-import { BaseValidEntity } from '../../base';
-import { personValidSchema } from './person';
+import { BaseValidEntity } from '../../base'
+import { personValidSchema } from './person'
 
 /**
  * Тип формы регистрации.
  */
 export type TRegisterForm = {
-  gender: string;
+  gender: string
 
-  lastName: string;
-  firstName: string;
-  middleName: string;
+  lastName: string
+  firstName: string
+  middleName: string
 
-  birthday: Date;
+  birthday: Date
 
-  phone: number;
-  email: string;
-  password: string;
-};
+  phone: string
+  email: string
+  password: string
+}
 
 /**
  * Схема валидации формы.
@@ -41,8 +41,8 @@ const formValidSchema: SchemaOf<TRegisterForm> = object({
     .meta({ label: 'Пароль' })
     .required('Укажите пароль')
     .min(6, 'Пароль должен содержать минимум 6 символов')
-    .max(30, 'Пароль должен содержать не более 6 символов'),
-});
+    .max(30, 'Пароль должен содержать не более 6 символов')
+})
 
 /**
  * Форма регистрации.
@@ -52,10 +52,10 @@ export class RegisterFormModel extends BaseValidEntity<TRegisterForm> {
     // Дата рождения.
     if (obj.birthday) {
       try {
-        obj.birthday = new Date(obj.birthday);
+        obj.birthday = new Date(obj.birthday)
       } catch (ex) {}
     }
 
-    super(obj, formValidSchema);
+    super(obj, formValidSchema)
   }
 }

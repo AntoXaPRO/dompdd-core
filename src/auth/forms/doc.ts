@@ -79,7 +79,7 @@ export const docValidSchema = {
     .max(4, 'Серия документа должна содержать не более 4 символов')
     .lowercase(),
   // Номер.
-  number?: string()
+  number: string()
     .meta({ label: 'Номер' })
     .trim()
     .max(6, 'Номер документа должн содержать не более 6 символов')
