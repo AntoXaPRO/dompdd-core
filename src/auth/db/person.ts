@@ -1,42 +1,25 @@
-import { TBaseDbEntity } from '../../base';
-import { TAvatar } from '../entities/avatar';
-import { TAccount } from './account';
+import { TBaseDbEntity } from '../../base'
 
-/**
- * Перечисление гендеров.
- */
-export enum GenderEnum {
-  man = 'man',
-  woman = 'woman',
-}
-
-/**
- * Тип гендера.
- */
-export type TGender = keyof typeof GenderEnum;
-
-/**
- * Список значения типов гендера.
- */
-export const genders = Object.keys(GenderEnum);
+import { TAvatar } from '../entities/avatar'
+import { TGender } from '../forms/person'
+import { TAccount } from './account'
 
 /**
  * Тип данных перс. данных.
  */
 export type TPerson = TBaseDbEntity & {
-  gender: string;
-  avatar: TAvatar;
+  gender: TGender
+  avatar: TAvatar
 
-  fullName: string;
-  firstName: string;
+  firstName: string
+  fullName: string
 
-  lastName?: string;
-  middleName?: string;
+  lastName?: string
+  middleName?: string
 
-  birthday?: Date;
-  phone?: number;
+  birthday?: Date
+  phone?: string
+  account?: TAccount
 
-  account?: TAccount;
-
-  comment?: string;
-};
+  comment?: string
+}

@@ -1,17 +1,34 @@
-import { string, object, number, date, SchemaOf } from 'yup'
+import { string, object, date, SchemaOf } from 'yup'
 import { BaseDbValidEntity } from '../../base'
-import { GenderEnum, genders } from '../db/person'
 
 // Проверка ФИО.
-const reqexpFIO = /^[A-zА-яЁё]+$/
+export const reqexpFIO = /^[А-яЁё]+$/
 // Значения номера.
-const reqexpPhone = /^[9]\d{9}$/
+export const reqexpPhone = /^[9]\d{9}$/
+
+/**
+ * Перечисление гендеров.
+ */
+export enum GenderEnum {
+  man = 'man',
+  woman = 'woman'
+}
+
+/**
+ * Тип гендера.
+ */
+export type TGender = keyof typeof GenderEnum
+
+/**
+ * Список значения типов гендера.
+ */
+export const genders = Object.keys(GenderEnum)
 
 /**
  * Трансформация номера телефона.
  */
 export const getPhoneNumberValue = (
-  phone: number | string
+  phone?: any
 ): number | undefined => {
   if (phone) {
     if (typeof phone === 'number') {
@@ -45,7 +62,7 @@ export const getPhoneNumberFormat = (
   phone: number | string,
   prefix: string = '+7 '
 ): string => {
-  let result = '+7 '
+  let result = prefix
   const strValue = getPhoneNumberValue(phone)?.toString().substring(0, 10)
   if (strValue) {
     for (let i = 0; i < strValue.length; i++) {
@@ -74,7 +91,7 @@ export type TPersonForm = {
   lastName?: string
 
   birthday?: Date
-  phone?: number
+  phone?: string
   comment?: string
 }
 
@@ -111,9 +128,9 @@ export const personValidSchema = {
     .max(30, 'Фамилия должна содержать не более 30 символов'),
   birthday: date()
     .meta({ label: 'Дата рождения' }),
-  phone: number()
+  phone: string()
     .meta({ label: 'Телефон' }) 
-    .transform((value, original) => getPhoneNumberValue(original))
+    // .transform((value, original) => getPhoneNumberValue(original))
     .test(
       'phoneNumber',
       'Укажите корректный номер телефона',

@@ -1,17 +1,17 @@
-import { TBaseDbEntity } from '../../base';
-import { TPerson } from './person';
-import { TGroup } from './group';
+import { TBaseDbEntity } from '../../base'
+
+import { TPerson } from './person'
+import { TGroup } from './group'
 
 /**
  * Тип данных аккаунта.
  */
 export type TAccount = TBaseDbEntity & {
-  email: string;
+  email: string
+  person: TPerson
 
-  person: TPerson;
-  groups?: TGroup[];
-
-  passwordHash?: string;
-  disabled?: boolean;
-  comment?: string;
-};
+  groups?: TGroup[]
+  passwordHash?: string
+  disabled?: boolean
+  comment?: string
+}
