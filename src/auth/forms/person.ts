@@ -101,11 +101,7 @@ export type TPersonForm = {
 export const personValidSchema = {
   gender: string()
     .meta({ label: 'Гендер' })
-    .oneOf(
-      genders,
-      `Гендер должен быть одним из следующих значений: ${genders}.`
-    )
-    .default(GenderEnum.man)
+    .oneOf(genders)
     .required('Укажите гендер'),
   firstName: string()
     .meta({ label: 'Имя' })
@@ -136,6 +132,7 @@ export const personValidSchema = {
       'Укажите корректный номер телефона',
       (value?: number | string) => {
         if(value) {
+          value = getPhoneNumberValue(value)
           return validPhoneNumber(value) 
         }else{
           return true
@@ -161,7 +158,6 @@ export class PersonFormModel extends BaseDbValidEntity<TPersonForm> {
     if (!obj.gender) {
       obj.gender = GenderEnum.man
     }
-
     // Дата Д.Р.
     if (obj.birthday) {
       try {
@@ -170,7 +166,6 @@ export class PersonFormModel extends BaseDbValidEntity<TPersonForm> {
         obj.birthday = undefined
       }
     }
-
     super(obj, personFromValidSchema)
   }
 
