@@ -126,16 +126,22 @@ export const personValidSchema = {
     .meta({ label: 'Дата рождения' }),
   phone: string()
     .meta({ label: 'Телефон' }) 
-    // .transform((value, original) => getPhoneNumberValue(original))
+    .transform((value, original) => {
+      const phone = getPhoneNumberValue(original)
+      if(phone) {
+        return phone.toString()
+      }else{
+        return ''
+      }
+    })
     .test(
       'phoneNumber',
       'Укажите корректный номер телефона',
       (value?: number | string) => {
         if(value) {
-          value = getPhoneNumberValue(value)
           return validPhoneNumber(value) 
         }else{
-          return true
+          return false
         }
       }
     ),
