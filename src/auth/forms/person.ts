@@ -25,7 +25,7 @@ export type TGender = keyof typeof GenderEnum
 export const genders = Object.keys(GenderEnum)
 
 /**
- * Трансформация номера телефона.
+ * Возвращает значение номера телефона.
  */
 export const getPhoneNumberValue = (
   phone?: any
@@ -141,7 +141,7 @@ export const personValidSchema = {
         if(value) {
           return validPhoneNumber(value) 
         }else{
-          return false
+          return true
         }
       }
     ),
