@@ -42,11 +42,7 @@ export class AccountFormModel extends BaseDbValidEntity<TAccountForm> {
   constructor(obj: any = {}) {
     // Конвертируем группы.
     try{
-      let groups: string[] = []
-      for(let i = 0; i < obj.groups.lenght; i++) {
-        groups.push(obj.groups[i]._id)
-      }
-      obj.groups = groups
+      obj.groups = [...obj.groups].map(e => e._id)
     }catch(ex: any) {
       obj.groups = []
     }
