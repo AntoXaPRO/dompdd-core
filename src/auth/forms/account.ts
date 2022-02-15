@@ -40,6 +40,17 @@ const accountFormValidSchema: SchemaOf<TAccountForm> = object(accountValidSchema
  */
 export class AccountFormModel extends BaseDbValidEntity<TAccountForm> {
   constructor(obj: any = {}) {
+    // Конвертируем группы.
+    try{
+      let groups: string[] = []
+      for(let i = 0; i < obj.groups.lenght; i++) {
+        groups.push(obj.groups[i]._id)
+      }
+      obj.groups = groups
+    }catch(ex: any) {
+      obj.groups = []
+    }
+
     super(obj, accountFormValidSchema)
   }
 
