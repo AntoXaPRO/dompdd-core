@@ -52,7 +52,8 @@ const formSchema: SchemaOf<TReviewFrom> = object({
     .required('Введите текст отзыва'),
 
   published: boolean()
-    .meta({ label: 'Опубликован' }),
+    .meta({ label: 'Опубликован' })
+    .default(false),
   first: boolean()
     .meta({ label: 'Я сдал(а) экзамен по воождению в ГИБДД с первого раза' }),
   video: string()
