@@ -58,7 +58,8 @@ export const schemaForm: SchemaOf<TInstructorForm> = object({
 
   // Заблокирован.
   disabled: boolean()
-    .meta({ label: 'Заблокирован' }),
+    .meta({ label: 'Заблокирован' })
+    .default(true),
   // Слоган.
   slogan: string()
     .max(300)
