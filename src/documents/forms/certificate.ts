@@ -5,6 +5,9 @@ import { BaseDbValidEntity } from '../../base'
  * Форма свидетельства.
  */
 export type TCertificateForm = {
+  _id?: string
+
+  unit: string
   person: string
 
   number?: number
@@ -16,15 +19,27 @@ export type TCertificateForm = {
  * Схема валидации.
  */
 export const certificateValidSchema = {
+  _id: string()
+    .meta({ label: 'ID' })
+    .trim()
+    .lowercase(),
+
+  unit: string()
+    .meta({ label: 'Подразделение' })
+    .trim()
+    .lowercase()
+    .required('Укажите подразделение'),
   person: string()
     .meta({ label: 'Персональные данные' })
     .required('Укажите персональные данные'),
+
   number: number()
     .meta({ label: 'Номер' }),
   date: date()
     .meta({ label: 'Дата выдачи' }),
   comment: string()
     .meta({ label: 'Примечание' })
+    .max(300, 'Примечание может содержать не  более 300 символов')
 }
 
 /**
