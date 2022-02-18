@@ -8,7 +8,9 @@ import * as organization from './organization'
 import * as reviews from './reviews'
 // Инструкторы.
 import * as instructors from './instructors'
+// Документы.
+import * as documents from './documents'
 
 /* 
 Экспорт модулей. */
-export { base, auth, organization, reviews, instructors }
+export { base, auth, organization, reviews, instructors, documents }
