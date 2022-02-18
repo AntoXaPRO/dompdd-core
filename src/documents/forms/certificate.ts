@@ -54,6 +54,11 @@ const certificateFormValidSchema: SchemaOf<TCertificateForm> = object(
  */
 export class CertificateFormModel extends BaseDbValidEntity<TCertificateForm> {
   constructor(obj: any = {}) {
+    // Перс. данные.
+    obj.person = obj.person?._id || undefined    
+    // Подразделение.
+    obj.unit = obj.unit?._id || undefined    
+
     super(obj, certificateFormValidSchema)
   }
 }
