@@ -24,7 +24,8 @@ export const accountValidSchema = {
     .required('Укажите адрес электронной почты')
     .email('Укажите корректный адрес электронной почты'),
   groups: array()
-    .meta({ label: 'Группы' }),
+    .meta({ label: 'Группы' })
+    .default([]),
   newPassword: string()
     .meta({ label: 'Новый пароль' })
     .min(6, 'Пароль должен содержать минимум 6 символов')
