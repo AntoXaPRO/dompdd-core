@@ -8,8 +8,8 @@ import { TAccount } from './db/account'
  * Данные для возврата после авторизации/регистрации.
  */
 export type TAuthObj = {
-  token: string;
-  account: TAccount;
+  token: string
+  account: TAccount
 }
 
 export { db, forms, entities }
